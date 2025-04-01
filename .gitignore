@@ -2,3 +2,5 @@ vendor/
 composer.lock
 *.env
 !example-project.env
+*.log
+*log.json
