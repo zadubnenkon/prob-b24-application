@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\bitrix24;
+namespace Lib\Bitrix24;
 
 class ApiClient
 {
@@ -43,7 +43,7 @@ class ApiClient
         $this->refreshToken = key_exists('clientSecret', $authParams) ? $authParams['clientSecret'] : '';
 
         if ($this->accessToken) {
-            $this->clientEndpoint .= '/rest/';
+            $this->clientEndpoint .= 'rest/';
         } else {
             $this->isWebhook = true;
         }

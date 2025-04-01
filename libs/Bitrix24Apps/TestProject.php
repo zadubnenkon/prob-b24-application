@@ -2,7 +2,7 @@
 
 namespace Lib\Bitrix24Apps;
 
-use Lib\bitrix24\ApiClient;
+use Lib\Bitrix24\ApiClient;
 use Lib\Bitrix24\RestEntity\User;
 
 class TestProject
@@ -13,13 +13,13 @@ class TestProject
     {
         $post = $_POST ?: json_decode(file_get_contents("php://input") ?: '[]', true);
 
-        if (!$post || !\key_exists('domain', $post)) {
-            throw new \Exception('Param "domain" is required!', 400);
+        if (!$post || !\key_exists('DOMAIN', $_REQUEST)) {
+            throw new \Exception('Param "DOMAIN" is required!', 400);
         }
 
         $env = parse_ini_file(__DIR__ . '/../../TestProject.env');
 
-        $this->apiClient = new ApiClient($post['domain'], [
+        $this->apiClient = new ApiClient($_REQUEST['DOMAIN'], [
             'accessToken' => $post['AUTH_ID'],
             'refreshToken' => $post['REFRESH_ID'],
             'clientID' => $env['CLIENT_ID'],

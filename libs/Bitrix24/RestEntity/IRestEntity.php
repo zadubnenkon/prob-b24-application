@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Bitrix24\RestControlleer;
+namespace Lib\Bitrix24\RestEntity;
 
 interface IRestEntity
 {
