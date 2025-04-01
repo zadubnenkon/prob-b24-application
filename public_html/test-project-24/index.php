@@ -4,6 +4,13 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 use Lib\Bitrix24Apps\TestProject;
 
-$result = (new TestProject)->init()->getCurrentUser();
+try {
+    $result = (new TestProject)->init()->getCurrentUser();
+} catch (\Exception $e) {
+    $result = [
+        'error' => $e->getCode(),
+        'error_information' => $e->getMessage(),
+    ];
+}
 
-echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+echo '<pre>', json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), '</pre>';
